@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>3D 饼图</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<!-- build:js lib/jquery.min.js -->
+		<script src="lib/jquery.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/d3.min.js -->
+		<script src="lib/d3.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/three.min.js -->
+		<script src="lib/three.js"></script>
+		<!-- endbuild -->
+
+		<script src="lib/Mirror.js"></script>
+		<script src="lib/TrackballControls.js"></script>
+
+		<script src="lib/html2canvas.js"></script>
+
+		<!-- build:js lib/doT.min.js -->
+		<script src="lib/doT.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/require.min.js -->
+		<script src="lib/require.js"></script>
+		<!-- endbuild -->
+
+		<script type="text/javascript">
+			requirejs.config({
+				baseUrl: '../src',
+				paths: {
+					QCharts: './index'
+				}
+			});
+			require(['QCharts'], function(QCharts) {
+				var option = {
+					engine: 'three',
+					scene: 'default',
+					charts: [{
+						type: 'Bar3D',
+						text: {
+							title: '',
+							subtitle: '每日本市信息分类图',
+							description: '由图可知，每日本市信息分类图微博关注度居于前3的分别是：[天河区, 番禺区, 越秀区]，信息量分别是：[35, 31, 28]。 '
+						},
+						position: [0, 0, 0],
+						rotation: [0, 0, 0],
+						xAxis: ['天河区', '番偶区', '越秀区', '海珠区', '白云区', '荔湾区', '从化区', '南沙区', '花都区', '增城区', '黄浦区'],
+						series: [{
+							name: '关注度',
+							data: [35, 31, 28, 24, 22, 18, 18, 13, 11, 11, 5]
+						}]
+					}]
+				};
+				var chart = new QCharts(document.body, option);
+			});
+		</script>
+
+	</body>
+
+</html>

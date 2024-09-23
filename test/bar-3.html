@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>3D 饼图</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<!-- build:js lib/jquery.min.js -->
+		<script src="lib/jquery.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/d3.min.js -->
+		<script src="lib/d3.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/three.min.js -->
+		<script src="lib/three.js"></script>
+		<!-- endbuild -->
+
+		<script src="lib/Mirror.js"></script>
+		<script src="lib/TrackballControls.js"></script>
+
+		<script src="lib/html2canvas.js"></script>
+
+		<!-- build:js lib/doT.min.js -->
+		<script src="lib/doT.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js lib/require.min.js -->
+		<script src="lib/require.js"></script>
+		<!-- endbuild -->
+
+		<script type="text/javascript">
+			requirejs.config({
+				baseUrl: '../src',
+				paths: {
+					QCharts: './index'
+				}
+			});
+			require(['QCharts'], function(QCharts) {
+				var option = {
+					engine: 'three',
+					scene: 'default',
+					charts: [{
+						type: 'Bar3D',
+						text: {
+							title: '',
+							subtitle: '',
+							description: ''
+						},
+						position: [0, 0, 0],
+						rotation: [0, 0, 0],
+						xAxis: ['埃塞尔比亚猴哥', '是叨叨不是道道', 'jojo', '名韩服饰', '搜号网', 'DV现场', '重口心理学', '王受之', '陈秋实', 'FT中文网', '华为何刚'],
+						series: [{
+							name: '评论数',
+							data: [0, 4, 18, 7, 8, 2, 8, 7, 1, 1, 15]
+						},{
+							name: '转发数',
+							data: [50, 41, 33, 31, 9, 9, 7, 7, 7, 6, 5]
+						}]
+					}]
+				};
+				var chart = new QCharts(document.body, option);
+			});
+		</script>
+
+	</body>
+
+</html>
